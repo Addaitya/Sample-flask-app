@@ -6,8 +6,7 @@ import os
 from database.create_db import create_database
 from database.person import fetch_people, append_person, fetch_person, add_image_name
 from werkzeug.middleware.proxy_fix import ProxyFix
-
-
+from waitress import serve
 
 
 
@@ -119,3 +118,6 @@ def get_photo_by_person_id(person_id):
     except Exception as e:
         print(f"Error in get_photo_by_person_id: \n{e}")
         return 500
+
+if __name__ == '__main__':
+    serve(app, host='0.0.0.0', port=5000, threads=2)   
