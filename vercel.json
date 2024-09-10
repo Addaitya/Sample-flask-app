@@ -11,11 +11,11 @@
       },
       {
         "src": "./*.db",
-        "use": "@vercel/static"
+        "use": "@vercel/python"
       },
       {
         "src": "./*.sql",
-        "use": "@vercel/static"
+        "use": "@vercel/python"
       },
       {
         "src": "static/**",
