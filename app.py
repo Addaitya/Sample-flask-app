@@ -11,7 +11,7 @@ from waitress import serve
 
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.getcwd() + os.getenv('image_folder')
+app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd() , os.getenv('image_folder'))
 app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
 
 app.wsgi_app = ProxyFix(
@@ -82,6 +82,8 @@ def add_image(person_id):
 
         if not add_image_name(person_id, unique_filename):
             return 500
+
+        print(os.path.join(app.config['UPLOAD_FOLDER'] , unique_filename))
 
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_filename))
 
